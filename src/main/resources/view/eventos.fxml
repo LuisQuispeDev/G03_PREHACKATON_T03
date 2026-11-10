@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns="http://javafx.com/javafx/17"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="vallegrande.edu.pe.gestion_eventos.controller.EventoController"
+        style="-fx-background-color: #f1f5f9;">
+
+    <top>
+
+        <VBox spacing="5"
+              style="-fx-background-color: #17365d;">
+
+            <padding>
+                <Insets top="22" right="25" bottom="22" left="25"/>
+            </padding>
+
+            <Label text="GESTIÓN DE EVENTOS"
+                   style="-fx-font-size: 26px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: white;"/>
+
+            <Label text="Administración y control de eventos"
+                   style="-fx-font-size: 14px;
+                          -fx-text-fill: #dbeafe;"/>
+
+        </VBox>
+
+    </top>
+
+    <center>
+
+        <VBox spacing="15">
+
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <HBox spacing="20">
+
+                <!-- FORMULARIO -->
+
+                <VBox spacing="10"
+                      prefWidth="320"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 10;
+                             -fx-border-color: #dbe3ee;
+                             -fx-border-radius: 10;">
+
+                    <padding>
+                        <Insets top="18" right="18" bottom="18" left="18"/>
+                    </padding>
+
+                    <Label text="DATOS DEL EVENTO"
+                           style="-fx-font-size: 18px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #17365d;"/>
+
+                    <Label text="Nombre del evento"/>
+
+                    <TextField fx:id="txtNombre"
+                               promptText="Ingrese el nombre"/>
+
+                    <Label text="Descripción"/>
+
+                    <TextArea fx:id="txtDescripcion"
+                              promptText="Descripción del evento"
+                              prefRowCount="3"
+                              wrapText="true"/>
+
+                    <Label text="Fecha del evento"/>
+
+                    <DatePicker fx:id="dpFecha"
+                                promptText="Seleccione fecha"
+                                maxWidth="Infinity"/>
+
+                    <Label text="Lugar"/>
+
+                    <TextField fx:id="txtLugar"
+                               promptText="Lugar del evento"/>
+
+                    <Label text="Modalidad"/>
+
+                    <ComboBox fx:id="cbModalidad"
+                              promptText="Seleccione modalidad"
+                              maxWidth="Infinity"/>
+
+                    <Label text="Estado"/>
+
+                    <ComboBox fx:id="cbEstado"
+                              promptText="Seleccione estado"
+                              maxWidth="Infinity"/>
+
+                    <Button text="GUARDAR / ACTUALIZAR"
+                            onAction="#guardarEvento"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;"/>
+
+                    <HBox spacing="8">
+
+                        <Button text="LIMPIAR"
+                                onAction="#limpiarFormulario"
+                                maxWidth="Infinity"
+                                HBox.hgrow="ALWAYS"/>
+
+                        <Button text="ELIMINAR"
+                                onAction="#eliminarEvento"
+                                maxWidth="Infinity"
+                                style="-fx-background-color: #fee2e2;
+                                       -fx-text-fill: #991b1b;"
+                                HBox.hgrow="ALWAYS"/>
+
+                    </HBox>
+
+                </VBox>
+
+                <!-- TABLA DE EVENTOS -->
+
+                <VBox spacing="12"
+                      HBox.hgrow="ALWAYS"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 10;
+                             -fx-border-color: #dbe3ee;
+                             -fx-border-radius: 10;">
+
+                    <padding>
+                        <Insets top="18" right="18" bottom="18" left="18"/>
+                    </padding>
+
+                    <Label text="EVENTOS REGISTRADOS"
+                           style="-fx-font-size: 18px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #17365d;"/>
+
+                    <HBox spacing="8">
+
+                        <TextField fx:id="txtBuscar"
+                                   promptText="Buscar eventos..."
+                                   HBox.hgrow="ALWAYS"
+                                   onAction="#buscarEventos"/>
+
+                        <Button text="BUSCAR"
+                                onAction="#buscarEventos"
+                                style="-fx-background-color: #0f766e;
+                                       -fx-text-fill: white;"/>
+
+                    </HBox>
+
+                    <TableView fx:id="tablaEventos"
+                               VBox.vgrow="ALWAYS">
+
+                        <columns>
+
+                            <TableColumn fx:id="colId"
+                                         text="ID"
+                                         prefWidth="45"/>
+
+                            <TableColumn fx:id="colNombre"
+                                         text="Nombre"
+                                         prefWidth="125"/>
+
+                            <TableColumn fx:id="colDescripcion"
+                                         text="Descripción"
+                                         prefWidth="140"/>
+
+                            <TableColumn fx:id="colFecha"
+                                         text="Fecha"
+                                         prefWidth="90"/>
+
+                            <TableColumn fx:id="colLugar"
+                                         text="Lugar"
+                                         prefWidth="100"/>
+
+                            <TableColumn fx:id="colModalidad"
+                                         text="Modalidad"
+                                         prefWidth="90"/>
+
+                            <TableColumn fx:id="colEstado"
+                                         text="Estado"
+                                         prefWidth="90"/>
+
+                        </columns>
+
+                    </TableView>
+
+                    <Label text="Selecciona un evento para editar sus datos."
+                           style="-fx-text-fill: #64748b;"/>
+
+                </VBox>
+
+            </HBox>
+
+            <Label fx:id="lblMensaje"
+                   text="Sistema listo."
+                   style="-fx-font-size: 13px;"/>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>
