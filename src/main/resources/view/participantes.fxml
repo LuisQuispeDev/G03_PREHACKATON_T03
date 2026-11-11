@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns="http://javafx.com/javafx/17"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="vallegrande.edu.pe.gestion_eventos.controller.ParticipanteController"
+        style="-fx-background-color: #f1f5f9;">
+
+    <top>
+
+        <VBox spacing="5"
+              style="-fx-background-color: #17365d;">
+
+            <padding>
+                <Insets top="22" right="25" bottom="22" left="25"/>
+            </padding>
+
+            <Label text="GESTIÓN DE PARTICIPANTES"
+                   style="-fx-font-size: 26px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: white;"/>
+
+            <Label text="Registro de datos, perfil y control de participantes"
+                   style="-fx-font-size: 14px;
+                          -fx-text-fill: #dbeafe;"/>
+
+        </VBox>
+
+    </top>
+
+    <center>
+
+        <VBox spacing="15">
+
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <HBox spacing="20">
+
+                <!-- FORMULARIO -->
+
+                <VBox spacing="10"
+                      prefWidth="320"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 10;
+                             -fx-border-color: #dbe3ee;
+                             -fx-border-radius: 10;">
+
+                    <padding>
+                        <Insets top="18" right="18" bottom="18" left="18"/>
+                    </padding>
+
+                    <Label text="DATOS DEL PARTICIPANTE"
+                           style="-fx-font-size: 18px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #17365d;"/>
+
+                    <Label text="Nombres"/>
+
+                    <TextField fx:id="txtNombres"
+                               promptText="Ingrese los nombres"/>
+
+                    <Label text="Apellidos"/>
+
+                    <TextField fx:id="txtApellidos"
+                               promptText="Ingrese los apellidos"/>
+
+                    <Label text="DNI"/>
+
+                    <TextField fx:id="txtDni"
+                               promptText="8 dígitos numéricos"/>
+
+                    <Label text="Correo electrónico"/>
+
+                    <TextField fx:id="txtCorreo"
+                               promptText="ejemplo@correo.com"/>
+
+                    <Label text="Teléfono"/>
+
+                    <TextField fx:id="txtTelefono"
+                               promptText="Ingrese el teléfono"/>
+
+                    <Label text="Institución"/>
+
+                    <TextField fx:id="txtInstitucion"
+                               promptText="Universidad o empresa"/>
+
+                    <Button text="GUARDAR / ACTUALIZAR"
+                            onAction="#guardarParticipante"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;"/>
+
+                    <HBox spacing="8">
+
+                        <Button text="LIMPIAR"
+                                onAction="#limpiarFormulario"
+                                maxWidth="Infinity"
+                                HBox.hgrow="ALWAYS"/>
+
+                        <Button text="ELIMINAR"
+                                onAction="#eliminarParticipante"
+                                maxWidth="Infinity"
+                                style="-fx-background-color: #fee2e2;
+                                       -fx-text-fill: #991b1b;"
+                                HBox.hgrow="ALWAYS"/>
+
+                    </HBox>
+
+                </VBox>
+
+                <!-- TABLA DE PARTICIPANTES -->
+
+                <VBox spacing="12"
+                      HBox.hgrow="ALWAYS"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 10;
+                             -fx-border-color: #dbe3ee;
+                             -fx-border-radius: 10;">
+
+                    <padding>
+                        <Insets top="18" right="18" bottom="18" left="18"/>
+                    </padding>
+
+                    <Label text="PARTICIPANTES REGISTRADOS"
+                           style="-fx-font-size: 18px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #17365d;"/>
+
+                    <HBox spacing="8">
+
+                        <TextField fx:id="txtBuscar"
+                                   promptText="Buscar por nombre, apellido, DNI o institución..."
+                                   HBox.hgrow="ALWAYS"
+                                   onAction="#buscarParticipantes"/>
+
+                        <Button text="BUSCAR"
+                                onAction="#buscarParticipantes"
+                                style="-fx-background-color: #0f766e;
+                                       -fx-text-fill: white;"/>
+
+                    </HBox>
+
+                    <TableView fx:id="tablaParticipantes"
+                               VBox.vgrow="ALWAYS">
+
+                        <columns>
+
+                            <TableColumn fx:id="colId"
+                                         text="ID"
+                                         prefWidth="45"/>
+
+                            <TableColumn fx:id="colNombres"
+                                         text="Nombres"
+                                         prefWidth="110"/>
+
+                            <TableColumn fx:id="colApellidos"
+                                         text="Apellidos"
+                                         prefWidth="110"/>
+
+                            <TableColumn fx:id="colDni"
+                                         text="DNI"
+                                         prefWidth="80"/>
+
+                            <TableColumn fx:id="colCorreo"
+                                         text="Correo"
+                                         prefWidth="135"/>
+
+                            <TableColumn fx:id="colTelefono"
+                                         text="Teléfono"
+                                         prefWidth="85"/>
+
+                            <TableColumn fx:id="colInstitucion"
+                                         text="Institución"
+                                         prefWidth="130"/>
+
+                        </columns>
+
+                    </TableView>
+
+                    <Label text="Selecciona un participante de la tabla para editar o eliminar sus datos."
+                           style="-fx-text-fill: #64748b;"/>
+
+                </VBox>
+
+            </HBox>
+
+            <Label fx:id="lblMensaje"
+                   text="Sistema listo."
+                   style="-fx-font-size: 13px;"/>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

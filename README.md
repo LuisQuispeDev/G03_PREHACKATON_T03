@@ -120,4 +120,89 @@ CREATE TABLE IF NOT EXISTS eventos (
 ![Validaciones](docs/images/06_validaciones.png)
 
 #### 7.7. Reporte General de Eventos y Estados
-![Reporte General](docs/images/07_reporte_general.png)
+![Reporte General](docs/images/07_reporte_general.png)}
+
+### 8. Módulo desarrollado: Gestión de Participantes
+* **Responsable:** Juan Jeremy Castillo Rojas – *Integrante 2*
+
+Este módulo permite administrar completamente los participantes registrados en el sistema.
+
+#### Funcionalidades principales:
+- **Registrar participantes:** Formulario para alta de nuevos participantes.
+- **Visualizar participantes:** Presentación de registros en una tabla interactiva (`TableView`).
+- **Buscar y filtrar participantes:** Búsqueda dinámica por nombres, apellidos, DNI o institución.
+- **Actualizar información:** Edición de detalles y perfil de participantes existentes.
+- **Eliminar participantes:** Borrado seguro de registros del sistema con confirmación (`Alert`).
+- **Validación de datos:** Control de campos obligatorios, formato de DNI (8 dígitos), correo electrónico válido y prevención de DNI duplicados.
+- **Generar reportes:** Exportación de reporte tabular ordenado por institución mediante Jaspersoft Studio.
+
+---
+
+### 9. Estructura del proyecto
+El módulo se encuentra estructurado bajo la arquitectura **MVC (Modelo-Vista-Controlador)** y el patrón de diseño **DAO (Data Access Object)**:
+
+```text
+src/main/java/vallegrande/edu/pe/gestion_eventos/
+├── model/        # Clases de dominio y representación de datos (Participante.java)
+├── dao/          # Clases de conexión y acceso a datos MySQL via JDBC (ConexionDB.java, ParticipanteDAO.java)
+├── controller/   # Lógica de negocio y control de la interfaz gráfica (ParticipanteController.java)
+└── view/         # Clase principal de inicio de la aplicación (MainApp.java)
+
+src/main/resources/
+└── view/         # Archivos FXML para las interfaces gráficas (participantes.fxml)
+```
+
+### 10. Configuración de la base de datos
+
+* **Motor:** MySQL
+* **Base de datos:** `mysql-eventos`
+* **Mecanismo de Conexión:** JDBC
+
+#### Parámetros de conexión:
+* **Host:** `localhost`
+* **Puerto:** `3306`
+* **Base de datos:** `db_eventos`
+* **Usuario:** *(`root`)*
+* **Contraseña:** *(Tu contraseña de MySQL)*
+
+#### Estructura de la tabla `participantes`:
+
+```sql
+CREATE DATABASE IF NOT EXISTS db_eventos;
+USE db_eventos;
+
+CREATE TABLE IF NOT EXISTS participantes (
+    id_participante INT AUTO_INCREMENT PRIMARY KEY,
+    nombres VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(100) NOT NULL,
+    dni VARCHAR(8) UNIQUE NOT NULL,
+    correo VARCHAR(100) NOT NULL,
+    telefono VARCHAR(15) NOT NULL,
+    institucion VARCHAR(150) NOT NULL
+);
+```
+
+---
+
+### 11. Evidencias del sistema
+
+#### 11.1. Interfaz principal
+![Interfaz Principal Participantes](docs/images/08_interfaz_participantes.png)
+
+#### 11.2. Formulario de registro de participantes
+![Formulario de Registro Participantes](docs/images/09_registro_participantes.png)
+
+#### 11.3. Listado de participantes registrados
+![Listado de Participantes](docs/images/10_listado_participantes.png)
+
+#### 11.4. Actualización de participantes
+![Actualización de Participantes](docs/images/11_actualizar_participante.png)
+
+#### 11.5. Eliminación de participantes
+![Eliminación de Participantes](docs/images/12_eliminar_participante.png)
+
+#### 11.6. Validaciones del sistema
+![Validaciones Participantes](docs/images/13_validaciones_participantes.png)
+
+#### 11.7. Reporte de Participantes por Institución
+![Reporte Participantes por Institución](docs/images/14_reporte_participantes_institucion.png)

@@ -11,12 +11,12 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/view/eventos.fxml")
+                getClass().getResource("/view/participantes.fxml")
         );
 
         Scene scene = new Scene(loader.load(), 1150, 700);
 
-        stage.setTitle("Sistema de Gestión de Eventos");
+        stage.setTitle("Sistema de Gestión de Participantes");
 
         stage.setScene(scene);
 
